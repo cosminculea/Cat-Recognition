@@ -1,0 +1,65 @@
+Cosmin Culea 
+311CA
+
+
+                    Tema 1
+
+
+    1.Spase Jacobi
+            
+            -pentru functia generate_probabilities_system am determinat relatiile de
+        recurenta pentru matricea de probabilitati atat pentru diagonala cat si
+        pentru restul matricei plecand de la exemplul dat in tema,cat si un exemplu
+        cu rows = 5
+            -pentru functia matrix_to_csr am parcurs toata matricea si am aplicat regulile
+        date in enunt
+            -pentru ultimele 2 functii Jacobi_factorization si Jacobi_sparse m-am folosit
+        implemtarile prezentate la laborator si de functia ajutatoare data de inmultire
+        a 2 matrice in forma CSR
+
+            -din punctul meu de vedere dificultatea acestei probleme a constat doar in prima
+        functie de generare a sistemului, restul implementarii fiind o recapitulare de la
+        laborator
+
+    2.K-Means
+           
+            -pentru functia clustering_pc am parcurs inital toate punctele si in functie de
+        indexul lor am facut suma pe fiecare dimensiune a fiecarui cluster in centroids.
+        De asemenea, m-am folosit de un vector verify_index in care am pastrat numarul de puncte
+        pentru fiecare cluster, astfel inca sa pot face media artimetica pe fiecare coordonata.
+        Apoi am folosit un while in care mi-am creat un nou centroids prin parcurgerea fiecarui 
+        punct. In parcurgerea unui punct am calculat toate distantele fata de acel punct si
+        punctele din centroid ul vechi (centroid_prev) si am gasit distanta minima. Reluand
+        rationamentul cu verify_index, am adunat in noul centroids toate punctele in functie de 
+        clusterul in care apartine(de data asta in functie de distanta minima), si am impartit
+        la numarul punctelor gasite in verify_index pentru fiecare cluster. La sfarsitul while
+        ului am verificat daca noul centroid s-a schimbat fata de cel vechi, iar daca nu s-a mai
+        modificat inseamna ca se opreste si s-a gasit centroidul cerut.
+            -pentru functia compute_cost_pc am parcurs toate punctele din points. Pentru parcurgerea
+        unui punct am calculat distantele fata de acel punct si toate punctele din centroids (si 
+        le-am stocat in distances). Apoi am adaugat progresiv in variabila cost toate minimurile
+        gasite in vectorul distances pentru toate punctele.
+
+            -dificultatea acestei probleme pentru mine a constat in intelegerea intregului algoritm
+        de K-Means, cum functioneaza de fapt aceste clustere si cum trebuiesc ele prelucrate (dupa
+        foarte multe recitiri ale enuntului + tutoriale, incercari esuate si nervi)
+
+    3.HouseHolder Prediction
+        
+            -intelegerea algoritmului in sine si a problemei nu a fost atat de dificila, deoarece
+        conceptele au fost foarte bine explicate in enuntul temei, INSA drumul catre implementarea
+        ei finala a fost extrem de greu(si in final foarte satisfacator). Initial am implememtat
+        RGBhistogram si HSVhistogram cu foarte multe for uri, adica extrem de ineficient, conform 
+        algoritmului dat in enunt. In forma initiala am lasat programul sa ruleze 40 de minute si
+        si mi-a afisat doar 3/4 procentaje. Ce am invatat cel mai mult din problema asta a fost sa
+        lucrez vectorizat, ce putere poate sa aiba vectorizarile si cum se lucreaza de fapt in matlab
+        (si importanta folosirii functiilor predefinite in matlab precum histc). Dupa ce am modificat
+        RGBhistogram, HSVhistogram si in special functia creata de mine RGBTOHSV, in care se face 
+        conversia, programul mi-a rulat in 20 de secunde.
+            -detaliile despre implementare sunt regasite in comentarii
+
+    4.Gradient Descendent Prediction
+
+        -pentru aceasta problema am refolosit majoritatea functiilor anterioare, schimbandu-se doar
+        learnul si evaluate-ul conform algoritmului din enunt. Avand experienta problemei anterioare
+        nu a mai fost atat de dificil sa lucrez vectorizat.
